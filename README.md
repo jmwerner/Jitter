@@ -13,7 +13,7 @@ To use this module in its current version, the user must have Python installed a
 
     jitter.start()
 
-or
+and following the prompt, or executing
 
     jitter.start("<API key>","<API secret>","<Access token>", "<Access token secret>")
 
