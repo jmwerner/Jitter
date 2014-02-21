@@ -20,20 +20,35 @@ and following the prompt, or executing
 
 Once an API connection has been made, the following commands can be executed with ease
 
-1.Get most recent 20 tweets from people the user follows on twitter
+1. Get most recent 20 tweets from people the user follows on twitter
+
+    ```
     jitter.get_timeline()
-2.Send tweet
+    ```
+    
+2. Send tweet
+
+    ```
     jitter.send_tweet("Tweeting from Jitter!!")
-3.Watch your twitter timeline update in real time
+    ```
+    
+3. Watch your twitter timeline update in real time
+ 
+    ```
     jitter.live_timeline()
-4.Stream random tweets from the internet (still in development/ works variably)
-    jitter.streamer()  
+    ```
 
---
+4. Stream random tweets from the internet (still in development/ use at your own risk!)
+
+    ```
+    jitter.streamer() 
+    ```
+
+
 ## Current dependencies
+* Julia
+  * PyCall
+* Python
+  * Twython
 
-1.Python
-  *Twython
-2.Julia
-  *PyCall
 
