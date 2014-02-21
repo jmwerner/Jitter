@@ -18,3 +18,10 @@ and following the prompt, or executing
 
     jitter.start("<API key>","<API secret>","<Access token>", "<Access token secret>")
 
+--
+Current dependencies
+*Python
+	-Twython
+*Julia
+	-PyCall
+
