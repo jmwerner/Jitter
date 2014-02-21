@@ -25,7 +25,7 @@ also, make sure your application is given read and write access in order for all
 2. Send tweet
 
     ```
-    jitter.send_tweet("Tweeting from Jitter!!")
+    jitter.send_tweet("Tweeting from jitter!!")
     ```
     
 3. Get most recent 20 tweets from people the user follows on twitter
