@@ -18,10 +18,22 @@ and following the prompt, or executing
 
     jitter.start("<API key>","<API secret>","<Access token>", "<Access token secret>")
 
+Once an API connection has been made, the following commands can be executed with ease
+
+1.Get most recent 20 tweets from people the user follows on twitter
+    jitter.get_timeline()
+2.Send tweet
+    jitter.send_tweet("Tweeting from Jitter!!")
+3.Watch your twitter timeline update in real time
+    jitter.live_timeline()
+4.Stream random tweets from the internet (still in development/ works variably)
+    jitter.streamer()  
+
 --
-Current dependencies
-*Python
-	-Twython
-*Julia
-	-PyCall
+## Current dependencies
+
+1.Python
+  *Twython
+2.Julia
+  *PyCall
 
