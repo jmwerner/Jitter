@@ -1,7 +1,6 @@
 jitter
 ======
 
-
 Julia module for interfacing with the Twitter streaming API, posting tweets, reading tweets, or watching your friends tweet in real time.
 
 --

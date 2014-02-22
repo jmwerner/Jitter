@@ -16,7 +16,7 @@ user_info = Dict({"api_key","api_secret","access_token", "access_secret"},{"",""
 function start()
 	print("Api key: ")
 	user_info["api_key"] = chomp(readline())
-	print("Api key secret: ")
+	print("Api secret: ")
 	user_info["api_secret"] = chomp(readline())
 	print("Access token: ")
 	user_info["access_token"] = chomp(readline())
