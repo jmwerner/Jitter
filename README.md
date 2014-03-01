@@ -5,7 +5,7 @@ Julia module for interfacing with the Twitter streaming API, posting tweets, rea
 
 --
 
-To use this module in its current version, the user must have Python as well as they Twython module installed and have a registered [Twitter API](http://dev.twitter.com) account. Once registered, create a new "Twitter Application" and input your application's 'API key', 'API secret', 'Access token', and 'Access token secret' by running
+To use this module in its current version, the user must have Python as well as they [twython](https://github.com/ryanmcgrath/twython) module installed and have a registered [Twitter API](http://dev.twitter.com) account. Once registered, create a new "Twitter Application" and input your application's 'API key', 'API secret', 'Access token', and 'Access token secret' by running
 
     jitter.start()
 
