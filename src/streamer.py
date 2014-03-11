@@ -5,28 +5,72 @@ from twython import TwythonStreamer
 import sys
 
 
-
-class MyStreamer(TwythonStreamer):
+class MyGeoStreamer(TwythonStreamer):
+	
 	def set_iterator(self, maximum_tweets):
 		self.iterator=1
 		self.max_tweets = maximum_tweets
+
 	def on_success(self, data):
-		if 'text' in data:
-			print data
-			self.iterator = self.iterator + 1
-			if self.iterator > self.max_tweets:
-				self.disconnect()
+		if 'geo' in data:
+			if data['lang'] == "en":
+				if data['geo']:
+					print  data['geo'], "\t", data['text'].encode('utf-8'), "\t"
+					self.iterator = self.iterator + 1
+					if self.iterator > self.max_tweets:
+						self.disconnect()
+					
 	def on_error(self, status_code, data):
 		print status_code
-
-        # Will stop on error
 		self.disconnect()
 
-#Command line argument check
-#print sys.argv
 
-#First command line argument (index 0) is name of script
+class MyStreamer(TwythonStreamer):
+	
+	def set_iterator(self, maximum_tweets):
+		self.iterator=1
+		self.max_tweets = maximum_tweets
 
-stream = MyStreamer(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
-stream.set_iterator(1)
-stream.statuses.filter(track='twitter')
+	def on_success(self, data):
+		if 'text' in data:
+			if data['lang'] == "en":
+
+				print data['text'].encode('utf-8'), "\t", data['created_at'], "\t", data['geo'], "\t"
+
+				self.iterator = self.iterator + 1
+				if self.iterator > self.max_tweets:
+					self.disconnect()
+					
+	def on_error(self, status_code, data):
+		print status_code
+		self.disconnect()
+
+
+class MyStreamer_user(TwythonStreamer):
+	def on_success(self, data):
+		if 'text' in data:
+			print "##########\nTweet: ", data['text'].encode('utf-8'), "\n"
+			print "Tweeter: ", data['user']['name'], "(", data['user']['screen_name'], ")\n"
+			print "Time: ", data['created_at'], "\n##########\n\n"
+
+	def on_error(self, status_code, data):
+		print status_code
+		self.disconnect()
+
+
+
+if sys.argv[1] == "geo":
+	geostream = MyGeoStreamer(sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5])
+	geostream.set_iterator(int(sys.argv[6]))
+	geostream.statuses.sample()	
+elif sys.argv[1] == "stream":
+	stream = MyStreamer(sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5])
+	stream.set_iterator(int(sys.argv[6]))
+	stream.statuses.sample()
+elif sys.argv[1] == "streamfilter":
+	stream = MyStreamer(sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5])
+	stream.set_iterator(int(sys.argv[6]))
+	stream.statuses.filter(track=sys.argv[7])
+elif sys.argv[1] == "user":
+	stream = MyStreamer_user(sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5])
+	stream.user()
