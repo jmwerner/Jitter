@@ -27,7 +27,7 @@ also, make sure your application is given read and write access in order for all
     jitter.send_tweet("<tweet text>")
     ```
     
-3. Get most recent 20 tweets from people the user follows on twitter
+3. Get most recent 20 tweets from people the user follows on twitter. Returns them in an array of raw dictionaries
 
     ```
     jitter.get_timeline()
