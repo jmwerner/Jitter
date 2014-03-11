@@ -13,7 +13,9 @@ and following the prompts, or executing
 
     jitter.start("<API key>","<API secret>","<Access token>", "<Access token secret>")
 
-also, make sure your application is given read and write access in order for all features to work. Once an API connection has been made, the following example commands can be executed with ease:
+also, make sure your application is given read and write access in order for all features to work. Once an API connection has been made, the following example commands can be executed with ease.
+
+### Commands
 
 1. Watch your twitter timeline update in real time
  
