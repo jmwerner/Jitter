@@ -75,6 +75,13 @@ function geo_streamer(tweet_number::Int)
 end
 
 
+function filter_geo_streamer(tweet_number::Int, keywords::String)
+	command = `Python streamer.py geofilter $(user_info["access_token"]) $(user_info["access_secret"]) $(user_info["api_key"]) $(user_info["api_secret"]) $tweet_number $keywords`
+	rawtweet = readall(command)
+	plain_stripper(rawtweet, tweet_number)
+end
+
+
 function geo_stripper(input::String, number::Int)
 	array = split(input, "\t\n")
 	array_in = array[!map(isempty,array)]
@@ -113,10 +120,4 @@ end
 
 
 end # end jitter
-
-
-
-
-
-
 
