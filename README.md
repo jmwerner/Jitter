@@ -7,11 +7,11 @@ Julia module for interfacing with the Twitter streaming API, posting tweets, rea
 
 To use this module in its current version, the user must have Python as well as they [twython](https://github.com/ryanmcgrath/twython) module installed and have a registered [Twitter API](http://dev.twitter.com) account. Once registered, create a new "Twitter Application" and input your application's 'API key', 'API secret', 'Access token', and 'Access token secret' by running
 
-    jitter.start()
+    Jitter.start()
 
 and following the prompts, or executing
 
-    jitter.start("<API key>","<API secret>","<Access token>", "<Access token secret>")
+    Jitter.start("<API key>","<API secret>","<Access token>", "<Access token secret>")
 
 also, make sure your application is given read and write access in order for all features to work. Once an API connection has been made, the following example commands can be executed with ease.
 
@@ -20,37 +20,37 @@ also, make sure your application is given read and write access in order for all
 1. Watch your twitter timeline update in real time
  
     ```
-    jitter.live_timeline()
+    Jitter.live_timeline()
     ```
     
 2. Send tweet
 
     ```
-    jitter.send_tweet("<tweet text>")
+    Jitter.send_tweet("<tweet text>")
     ```
     
 3. Get most recent 20 tweets from people the user follows on twitter. Returns them in an array of raw dictionaries
 
     ```
-    jitter.get_timeline()
+    Jitter.get_timeline()
     ```
 
 4. Stream a given number of random public tweets from the internet. Returns Julia dictionary of tweets, time, and GPS coordinates (if available)
 
     ```
-    jitter.streamer(<integer number of tweets>) 
+    Jitter.streamer(<integer number of tweets>) 
     ```
 
 5. Stream a given number of random public tweets from the internet that are filtered by the given keyword. Returns Julia dictionary of tweets, time, and GPS coordinates (if available)
 
     ```
-    jitter.filter_streamer(<integer number of tweets>, "<keyword argument>") 
+    Jitter.filter_streamer(<integer number of tweets>, "<keyword argument>") 
     ```
     
 6. Stream a given number of random public tweets from the internet that are guaranteed to have GPS coordinates. Returns Julia dictionary of tweets and GPS coordinates
 
     ```
-    jitter.geo_streamer(<integer number of tweets>) 
+    Jitter.geo_streamer(<integer number of tweets>) 
     ```
 
 
@@ -78,5 +78,5 @@ also, make sure your application is given read and write access in order for all
             * Twython
     * TO DO
         * Select more tweet entities to return 
-        * Add time to the return dictionary for the geo_streamer
-        * Condense stripper functions into one flexible function that handles all types of streaming
+        * ~~Add time to the return dictionary for the geo_streamer~~
+        * ~~Condense stripper functions into one flexible function that handles all types of streaming~~

@@ -15,7 +15,7 @@ class MyGeoStreamer(TwythonStreamer):
 		if 'geo' in data:
 			if data['lang'] == "en":
 				if data['geo']:
-					print  data['geo'], "\t", data['text'].encode('utf-8'), "\t"
+					print  data['text'].encode('utf-8'), "\t", data['created_at'], "\t", data['geo'], "\t"
 					self.iterator = self.iterator + 1
 					if self.iterator > self.max_tweets:
 						self.disconnect()
