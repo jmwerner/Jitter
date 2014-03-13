@@ -1,7 +1,7 @@
 Jitter
 ======
 
-Julia module for interfacing with the Twitter streaming API, posting tweets, reading tweets, or watching your friends tweet in real time.
+Julia module for interfacing with the Twitter streaming API, posting tweets, reading tweets, or watching your friends tweet in real time. Jitter functions as a wrapper for the [twython](https://github.com/ryanmcgrath/twython) Python module.
 
 --
 
