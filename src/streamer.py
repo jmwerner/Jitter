@@ -85,6 +85,7 @@ if sys.argv[1] == "geo":
 	geostream.set_iterator(int(sys.argv[6]))
 	#geostream.statuses.sample() #Worldwide random sampling
 	geostream.statuses.filter(locations='-130,26,-60,50') #Rough USA coordinates
+#For future development
 elif sys.argv[1] == "geofilter":
 	gfstream = MyGeoFilterStreamer(sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5])
 	gfstream.set_iterator(int(sys.argv[6]))

@@ -24,8 +24,8 @@ function start()
 end
 
 
-function start(access_token_in::String,access_secret_in::String, 
-			   api_key_in::String, api_secret_in::String)
+function start(api_key_in::String, api_secret_in::String,
+				access_token_in::String,access_secret_in::String)
 	user_info[:access_token] = access_token_in
 	user_info[:access_secret] = access_secret_in
 	user_info[:api_key] = api_key_in
@@ -35,52 +35,44 @@ end
 
 
 function get_timeline()
-	twitter_connection = twython.Twython(user_info[:access_token], user_info[:access_secret], user_info[:api_key], user_info[:api_secret])
+	twitter_connection = twython.Twython(user_info[:api_key], user_info[:api_secret], user_info[:access_token], user_info[:access_secret])
 	twitter_connection[:get_home_timeline]()
 end
 
 
 function send_tweet(tweet_text)
-	twitter_connection = twython.Twython(user_info[:access_token], user_info[:access_secret], user_info[:api_key], user_info[:api_secret])
+	twitter_connection = twython.Twython(user_info[:api_key], user_info[:api_secret], user_info[:access_token], user_info[:access_secret])
 	twitter_connection[:update_status](status = tweet_text)
 	"Tweet Sent!"
 end
 
 
 function live_timeline()
-	command = `Python streamer.py user $(user_info[:access_token]) $(user_info[:access_secret]) $(user_info[:api_key]) $(user_info[:api_secret])`
+	command = `Python src/streamer.py user $(user_info[:api_key]) $(user_info[:api_secret]) $(user_info[:access_token]) $(user_info[:access_secret])`
 	run(command)
 	nothing
 end
 
 
 function filter_streamer(tweet_number::Int, keywords::String)
-	command = `Python streamer.py streamfilter $(user_info[:access_token]) $(user_info[:access_secret]) $(user_info[:api_key]) $(user_info[:api_secret]) $tweet_number $keywords`
+	command = `Python src/streamer.py streamfilter $(user_info[:api_key]) $(user_info[:api_secret]) $(user_info[:access_token]) $(user_info[:access_secret]) $tweet_number $keywords`
 	rawtweet = readall(command)
 	tweet_stripper(rawtweet, tweet_number)
 end
 
 
 function streamer(tweet_number::Int)
-	command = `Python streamer.py stream $(user_info[:access_token]) $(user_info[:access_secret]) $(user_info[:api_key]) $(user_info[:api_secret]) $tweet_number`
+	command = `Python src/streamer.py stream $(user_info[:api_key]) $(user_info[:api_secret]) $(user_info[:access_token]) $(user_info[:access_secret]) $tweet_number`
 	rawtweet = readall(command)
 	tweet_stripper(rawtweet, tweet_number)
 end
 
 
 function geo_streamer(tweet_number::Int)
-	command = `Python streamer.py geo $(user_info[:access_token]) $(user_info[:access_secret]) $(user_info[:api_key]) $(user_info[:api_secret]) $tweet_number`
+	command = `Python src/streamer.py geo $(user_info[:api_key]) $(user_info[:api_secret]) $(user_info[:access_token]) $(user_info[:access_secret]) $tweet_number`
 	rawtweet = readall(command)
 	tweet_stripper(rawtweet, tweet_number)
 end
-
-
-function filter_geo_streamer(tweet_number::Int, keywords::String)
-	command = `Python streamer.py geofilter $(user_info[:access_token]) $(user_info[:access_secret]) $(user_info[:api_key]) $(user_info[:api_secret]) $tweet_number $keywords`
-	rawtweet = readall(command)
-	tweet_stripper(rawtweet, tweet_number)
-end
-
 
 function tweet_stripper(input::String, number::Int)
 	posts = split(input, "\t\n")
