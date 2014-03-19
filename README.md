@@ -35,19 +35,19 @@ also, make sure your application is given read and write access in order for all
     Jitter.get_timeline()
     ```
 
-4. Stream a given number of random public tweets from the internet. Returns Julia dictionary of tweets, time, and GPS coordinates (if available)
+4. Stream a given number of random public tweets from the internet, restricted to the United States (if geo data available). Returns Julia dictionary of tweets, time, and GPS coordinates (if available)
 
     ```
     Jitter.streamer(<integer number of tweets>) 
     ```
 
-5. Stream a given number of random public tweets from the internet that are filtered by the given keyword. Returns Julia dictionary of tweets, time, and GPS coordinates (if available)
+5. Stream a given number of random worldwide public tweets from the internet that are filtered by the given keyword. Returns Julia dictionary of tweets, time, and GPS coordinates (if available)
 
     ```
     Jitter.filter_streamer(<integer number of tweets>, "<keyword argument>") 
     ```
     
-6. Stream a given number of random public tweets from the internet that are guaranteed to have GPS coordinates. Returns Julia dictionary of tweets and GPS coordinates
+6. Stream a given number of random public tweets from the internet that are guaranteed to have GPS coordinates, restricted to the United States. Returns Julia dictionary of tweets and GPS coordinates
 
     ```
     Jitter.geo_streamer(<integer number of tweets>) 
