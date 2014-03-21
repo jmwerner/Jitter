@@ -11,7 +11,7 @@ To use this module in its current version, the user must have Python as well as 
 
 and following the prompts, or executing
 
-    Jitter.start("<API key>","<API secret>","<Access token>", "<Access token secret>")
+    Jitter.start("<API key>", "<API secret>", "<Access token>", "<Access token secret>")
 
 also, make sure your application is given read and write access in order for all features to work. Once an API connection has been made, the following example commands can be executed with ease. It should be noted that all tweets are pre-filtered to only include tweets from users who are registered with English as their primary language. 
 
