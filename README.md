@@ -5,6 +5,19 @@ Julia module for interfacing with the Twitter streaming API, posting tweets, rea
 
 --
 
+In its current state, the module should be used from the Jitter home directory. In other words,
+
+    julia> pwd()
+    ".../Jitter"
+    
+Next, add the ```/src/``` subirectory to your ```LOAD_PATH``` and import the module with the following code
+
+    push!(LOAD_PATH, pwd()*"/src/")
+    using Jitter
+    
+--
+
+
 To use this module in its current version, the user must have Python as well as they [twython](https://github.com/ryanmcgrath/twython) module installed and have a registered [Twitter API](http://dev.twitter.com) account. Once registered, create a new "Twitter Application" and input your application's 'API key', 'API secret', 'Access token', and 'Access token secret' by running
 
     Jitter.start()
@@ -14,7 +27,6 @@ and following the prompts, or executing
     Jitter.start("<API key>", "<API secret>", "<Access token>", "<Access token secret>")
 
 also, make sure your application is given read and write access in order for all features to work. Once an API connection has been made, the following example commands can be executed with ease. It should be noted that all tweets are pre-filtered to only include tweets from users who are registered with English as their primary language. 
-
 ### Commands
 
 1. Watch your twitter timeline update in real time
